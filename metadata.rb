@@ -1,20 +1,17 @@
 name 'hdf-chef'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
-license 'All Rights Reserved'
+maintainer 'Ryan Hansohn'
+maintainer_email 'info@imnorobot.com'
+license 'MIT'
 description 'Installs/Configures hdf-chef'
-long_description 'Installs/Configures hdf-chef'
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '0.1.0'
 chef_version '>= 12.14' if respond_to?(:chef_version)
+source_url 'https://github.com/hansohn/hdp-chef' if respond_to?(:source_url)
+issues_url 'https://github.com/hansohn/hdp-chef/issues' if respond_to?(:issues_url)
 
-# The `issues_url` points to the location where issues for this cookbook are
-# tracked.  A `View Issues` link will be displayed on this cookbook's page when
-# uploaded to a Supermarket.
-#
-# issues_url 'https://github.com/<insert_org_here>/hdf-chef/issues'
+supports 'centos', '>= 7.0'
 
-# The `source_url` points to the development repository for this cookbook.  A
-# `View Source` link will be displayed on this cookbook's page when uploaded to
-# a Supermarket.
-#
-# source_url 'https://github.com/<insert_org_here>/hdf-chef'
+depends 'ambari-chef'
+depends 'hostsfile'
+depends 'java-chef'
+depends 'ulimit'
