@@ -7,9 +7,9 @@ default['java']['install_version'] = 'jdk-8u172-linux-x64'
 
 # -- AMBARI CLUSTER --
 default['hw']['cluster']['name'] = 'hdf_demo'
-default['hw']['cluster']['blueprint_name'] = 'hdf_demo_2.1.1_blueprint'
-default['hw']['cluster']['blueprint_file'] = 'hdf_demo_2.1.1_blueprint.json'
-default['hw']['cluster']['hostmapping_file'] = 'hdf_demo_2.1.1_hostmapping.json'
+default['hw']['cluster']['blueprint_name'] = 'hdf_demo_3.1.2_blueprint'
+default['hw']['cluster']['blueprint_file'] = 'hdf_demo_3.1.2_blueprint.json'
+default['hw']['cluster']['hostmapping_file'] = 'hdf_demo_3.1.2_hostmapping.json'
 
 # -- AMBARI --
 default['hw']['ambari']['version'] = '2.6.2'
@@ -127,3 +127,8 @@ end
 default['hw']['nifi']['config']['nifi-ambari-config']['nifi.security.encrypt.configuration.password'] = 'Welcome12345'
 default['hw']['nifi']['config']['nifi-ambari-config']['nifi.sensitive.props.key'] = 'Welcome12345'
 default['hw']['nifi']['config']['nifi-ambari-ssl-config']['nifi.toolkit.tls.token'] = 'changeit'
+default['hw']['zookeeper']['config']['zoo.cfg']['dataDir'] = '/hadoop/zookeeper'
+default['hw']['zookeeper']['user']['name'] = 'zookeeper'
+default['hw']['zookeeper']['user']['home'] = '/home/zookeeper'
+default['hw']['zookeeper']['user']['shell'] = '/bin/bash'
+default['hw']['zookeeper']['user']['uid'] = '15025'
