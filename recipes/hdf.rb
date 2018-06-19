@@ -7,11 +7,12 @@
 # install hdp repo
 include_recipe "#{cookbook_name}::repo_hdf"
 
-# config hdp applications
-
 # install hortonworks data flow
 include_recipe "#{cookbook_name}::hdf_install"
 include_recipe "#{cookbook_name}::hdf_config"
+
+# config hdp applications
+include_recipe "#{cookbook_name}::zookeeper"
 
 # add hdp cluster files
 include_recipe "#{cookbook_name}::hdf_cluster"
