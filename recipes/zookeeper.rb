@@ -1,5 +1,5 @@
 #
-# Cookbook:: hdp-chef
+# Cookbook:: hdf-chef
 # Recipe:: zookeeper
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.

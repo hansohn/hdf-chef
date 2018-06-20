@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: hdp-chef
+# Cookbook Name:: hdf-chef
 # Recipe:: hdf_cluster
 #
 # Copyright (c) 2017 The Authors, All Rights Reserved.

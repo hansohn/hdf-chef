@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: hdp-chef
+# Cookbook Name:: hdf-chef
 # Recipe:: repo_hdf
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
