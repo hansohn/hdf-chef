@@ -1,5 +1,7 @@
 # hdf-chef
 
+[![Build Status](https://travis-ci.org/hansohn/hdf-chef.svg?branch=master)](https://travis-ci.org/hansohn/hdf-chef) [![GitHub tag](https://img.shields.io/github/tag/hansohn/hdf-chef.svg)](https://github.com/hansohn/hdf-chef)
+
 This cookbook extends the [Apache Ambari](https://ambari.apache.org/) cookbook to install [Hortonworks Data Flow](https://hortonworks.com/products/data-platforms/hdf/) and provision [NiFi](https://nifi.apache.org/) clusters using [Blueprints](https://cwiki.apache.org/confluence/display/AMBARI/Blueprints).
 
 ### Prerequsites
