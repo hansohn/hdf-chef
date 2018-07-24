@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/hansohn/hdf-chef.svg?branch=master)](https://travis-ci.org/hansohn/hdf-chef) [![GitHub tag](https://img.shields.io/github/tag/hansohn/hdf-chef.svg)](https://github.com/hansohn/hdf-chef)
 
-This cookbook extends the [Apache Ambari](https://ambari.apache.org/) cookbook to install [Hortonworks Data Flow](https://hortonworks.com/products/data-platforms/hdf/) and provision [NiFi](https://nifi.apache.org/) clusters using [Blueprints](https://cwiki.apache.org/confluence/display/AMBARI/Blueprints).
+This cookbook extends the [ambari-chef](https://github.com/hansohn/ambari-chef) cookbook to install [Hortonworks Data Flow](https://hortonworks.com/products/data-platforms/hdf/) and provision [NiFi](https://nifi.apache.org/) clusters using [Blueprints](https://cwiki.apache.org/confluence/display/AMBARI/Blueprints).
 
 ### Prerequsites
 
@@ -26,7 +26,7 @@ default['python']['python2']['packages'] = ['python']
 
 # java 8
 default['java']['install_from'] = 'oracle_source'
-default['java']['install_version'] = 'jdk-8u172-linux-x64'
+default['java']['install_version'] = 'jdk-8u181-linux-x64'
 ```
 
 ### Configuration
