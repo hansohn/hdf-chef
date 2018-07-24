@@ -2,13 +2,36 @@
 # Cookbook Name:: hdf-chef
 # Recipe:: hdf_install
 #
-# Copyright (c) 2016 The Authors, All Rights Reserved.
+# The MIT License (MIT)
+#
+# Copyright:: 2018, Ryan Hansohn
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+
+hdf_mpack_source = -> { node['hw']['hdf'][node['hw']['hdf']['version']]['mgmt_pack']['url'] }
+hdf_mpack_checksum = -> { node['hw']['hdf'][node['hw']['hdf']['version']]['mgmt_pack']['checksum'] }
 
 # download hdf management pack
 remote_file 'download_hdf_mgmt_pack' do
   path "/tmp/hdf-ambari-mpack-#{node['hw']['hdf']['version']}.tar.gz"
-  source node['hw']['hdf']['mgmt_pack']['url']
-  checksum node['hw']['hdf']['mgmt_pack']['checksum']
+  source hdf_mpack_source.call
+  checksum hdf_mpack_checksum.call
 end
 
 # backup ambari resources
