@@ -7,12 +7,12 @@ default['java']['install_version'] = 'jdk-8u181-linux-x64'
 
 # -- AMBARI CLUSTER --
 default['hw']['cluster']['name'] = 'hdf_demo'
-default['hw']['cluster']['blueprint_name'] = 'hdf_demo_3.1.2_blueprint'
-default['hw']['cluster']['blueprint_file'] = 'hdf_demo_3.1.2_blueprint.json'
-default['hw']['cluster']['hostmapping_file'] = 'hdf_demo_3.1.2_hostmapping.json'
+default['hw']['cluster']['blueprint_name'] = 'hdf_demo_3.2.0_blueprint'
+default['hw']['cluster']['blueprint_file'] = 'hdf_demo_3.2.0_blueprint.json'
+default['hw']['cluster']['hostmapping_file'] = 'hdf_demo_3.2.0_hostmapping.json'
 
 # -- AMBARI --
-override['hw']['ambari']['version'] = '2.6.2'
+override['hw']['ambari']['version'] = '2.7.0'
 default['hw']['ambari']['server']['setup']['db']['databasehost'] = 'localhost'
 default['hw']['ambari']['server']['setup']['db']['databaseport'] = '5432'
 default['hw']['ambari']['server']['setup']['db']['databasepassword'] = 'bigdata'
@@ -100,7 +100,7 @@ else
 end
 
 # -- HORTONWORKS HDF --
-default['hw']['hdf']['version'] = '3.1.2'
+default['hw']['hdf']['version'] = '3.2.0'
 # 2.1.1
 default['hw']['hdf']['2.1.1']['version_full'] = '2.1.1.0-2'
 default['hw']['hdf']['2.1.1']['repo'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/2.x/updates/2.1.1.0/hdf.repo"
@@ -121,6 +121,11 @@ default['hw']['hdf']['3.1.2']['version_full'] = '3.1.2.0-7'
 default['hw']['hdf']['3.1.2']['repo'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/3.x/updates/3.1.2.0/hdf.repo"
 default['hw']['hdf']['3.1.2']['mgmt_pack']['url'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/3.x/updates/3.1.2.0/tars/hdf_ambari_mp/hdf-ambari-mpack-3.1.2.0-7.tar.gz"
 default['hw']['hdf']['3.1.2']['mgmt_pack']['checksum'] = 'f7bf7469cf4152dacd517916a0a93936ed1baf3328efa232c6e8f0894af77fe0'
+# 3.2.0
+default['hw']['hdf']['3.2.0']['version_full'] = '3.2.0.0-520'
+default['hw']['hdf']['3.2.0']['repo'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/3.x/updates/3.2.0.0/hdf.repo"
+default['hw']['hdf']['3.2.0']['mgmt_pack']['url'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/3.x/updates/3.2.0.0/tars/hdf_ambari_mp/hdf-ambari-mpack-3.2.0.0-520.tar.gz"
+default['hw']['hdf']['3.2.0']['mgmt_pack']['checksum'] = '89472d3e969a7a3117c120b15433f18fd1963c81aaa87bc5ccf88e7cf0d80b6e'
 
 # hdf
 default['hw']['nifi']['config']['nifi-ambari-config']['nifi.security.encrypt.configuration.password'] = 'Welcome12345'

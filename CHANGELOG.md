@@ -6,6 +6,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - no new features in development at this time
 
+## [0.2.0](https://github.com/hansohn/hdf-chef/compare/0.1.0...0.2.0) (Aug 14, 2018)
+
+FEATURES:
+
+- bump hdf version to 3.2.0
+- bump ambari version to 2.7.0
+
 ## [0.1.0](https://github.com/hansohn/hdf-chef/compare/0.1.0...0.1.0) (Jul 23, 2018)
 
 FEATURES:

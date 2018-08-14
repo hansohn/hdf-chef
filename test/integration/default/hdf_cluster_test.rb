@@ -14,20 +14,20 @@ control 'hdf-chef::hdf_cluster' do
     its('group') { should eq 'root' }
   end
 
-  describe file('/var/lib/ambari-clusters/hdf_demo_3.1.2_blueprint.json') do
+  describe file('/var/lib/ambari-clusters/hdf_demo_3.2.0_blueprint.json') do
     it { should be_file }
     its('owner') { should eq 'ambari-server' }
     its('group') { should eq 'root' }
   end
 
-  describe file('/var/lib/ambari-clusters/hdf_demo_3.1.2_hostmapping.json') do
+  describe file('/var/lib/ambari-clusters/hdf_demo_3.2.0_hostmapping.json') do
     it { should be_file }
     its('owner') { should eq 'ambari-server' }
     its('group') { should eq 'root' }
   end
 
   describe bash("curl -H 'X-Requested-By: ambari' -u admin:admin http://ambari-server:8080/api/v1/blueprints") do
-    its('stdout') { should match /hdf_demo_3.1.2_blueprint/ }
+    its('stdout') { should match /hdf_demo_3.2.0_blueprint/ }
     its('exit_status') { should eq 0 }
   end
 
