@@ -32,6 +32,7 @@ include_recipe "#{cookbook_name}::hdf_install"
 include_recipe "#{cookbook_name}::hdf_config"
 
 # config hdp applications
+include_recipe "#{cookbook_name}::nifi"
 include_recipe "#{cookbook_name}::zookeeper"
 
 # add hdp cluster files
