@@ -51,4 +51,3 @@ group 'create_hadoop_group' do
   members     node['hw']['nifi']['user']['name']
   action      :create
 end
-
