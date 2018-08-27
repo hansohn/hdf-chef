@@ -32,6 +32,29 @@ directory 'make_/var/lib/ambari-clusters' do
   group 'root'
 end
 
+hdf_version_full = -> { node['hw']['hdf'][node['hw']['hdf']['version']]['version_full'] }
+hdf_vdf = -> { node['hw']['hdf'][node['hw']['hdf']['version']]['vdf'] }
+
+# hdf-cluster: add version definition file to cluster dir
+remote_file "create_/var/lib/ambari-clusters/HDF-#{hdf_version_full.call}.xml" do
+  source hdf_vdf.call
+  path "/var/lib/ambari-clusters/HDF-#{hdf_version_full.call}.xml"
+  owner node['hw']['ambari']['server']['user']['name']
+  group 'root'
+  action :create_if_missing
+end
+
+# hdf-cluster: add version definition post to cluster dir
+template "create_/var/lib/ambari-clusters/#{node['hw']['cluster']['version_definition_file']}" do
+  path "/var/lib/ambari-clusters/#{node['hw']['cluster']['version_definition_file']}"
+  source 'version_definition_file.json.erb'
+  variables(
+    'version_full' => hdf_version_full.call
+  )
+  owner node['hw']['ambari']['server']['user']['name']
+  group 'root'
+end
+
 # hdf-cluster: add blueprint to cluster dir
 template "create_/var/lib/ambari-clusters/#{node['hw']['cluster']['blueprint_file']}" do
   path "/var/lib/ambari-clusters/#{node['hw']['cluster']['blueprint_file']}"
