@@ -24,5 +24,5 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-# install/configure kafka
+# install/configure zookeeper
 include_recipe "#{cookbook_name}::zookeeper_user"
