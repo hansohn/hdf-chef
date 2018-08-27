@@ -44,6 +44,14 @@ end
 
 # wait a maximum of 1 seconds in the TIME_WAIT state after a FIN, to handle
 # any remaining packets in the network.
-# sysctl_param 'net.netfilter.nf_conntrack_tcp_timeout_time_wait' do
-#   value 1
-# end
+sysctl 'net.netfilter.nf_conntrack_tcp_timeout_time_wait' do
+  key 'net.netfilter.nf_conntrack_tcp_timeout_time_wait'
+  value 1
+  action :nothing
+end
+
+bash 'load_ip_conntrack' do
+  code 'modprobe ip_conntrack'
+  action :run
+  notifies :apply, 'sysctl[net.netfilter.nf_conntrack_tcp_timeout_time_wait]', :immediately
+end
