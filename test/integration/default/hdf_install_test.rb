@@ -8,19 +8,7 @@
 control 'hdf-chef::hdf_install' do
   title 'Testing hdf install installation'
 
-  describe file('/tmp/hdf-ambari-mpack-3.2.0.tar.gz') do
-    it { should be_file }
-    its('owner') { should eq 'root' }
-    its('group') { should eq 'root' }
-  end
-
-  describe file('/var/lib/ambari-server/resources.backup') do
-    it { should be_directory }
-    its('owner') { should eq 'ambari-server' }
-    its('group') { should eq 'root' }
-  end
-
-  describe file('/var/lib/ambari-server/resources/mpacks/hdf-ambari-mpack-3.2.0.0-520') do
+  describe file('/var/lib/ambari-server/resources/mpacks/hdf-ambari-mpack-3.4.1.1-4') do
     it { should be_directory }
     its('owner') { should eq 'ambari-server' }
     its('group') { should eq 'root' }

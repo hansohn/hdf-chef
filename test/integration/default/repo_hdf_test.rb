@@ -8,7 +8,7 @@
 control 'hdf-chef::repo_hdf' do
   title 'Testing Hortonworks HDF repos'
 
-  describe yum.repo('HDF-3.2.0.0') do
+  describe yum.repo('HDF-3.4.1.1') do
     it { should exist }
     it { should be_enabled }
   end

@@ -5,14 +5,14 @@
 # The Inspec reference, with examples and extensive documentation, can be
 # found at https://docs.chef.io/inspec_reference.html
 
-unless os.windows?
-  describe user('root') do
-    it { should exist }
-    skip 'This is an example test, replace with your own test.'
-  end
-end
+control 'hdf-chef::hdf_config' do
+  title 'Testing hdf config'
 
-describe port(80) do
-  it { should_not be_listening }
-  skip 'This is an example test, replace with your own test.'
+  describe kernel_parameter('net.ipv4.ip_local_port_range') do
+    its('value') { should match /10000\t65000/ }
+  end
+
+  describe kernel_parameter('net.netfilter.nf_conntrack_tcp_timeout_time_wait') do
+    its('value') { should eq 1 }
+  end
 end
