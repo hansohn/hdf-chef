@@ -2,17 +2,17 @@
 default['python']['python2']['packages'] = ['python']
 
 # -- JAVA --
-default['java']['install_from'] = 'oracle_source'
-default['java']['install_version'] = 'jdk-8u181-linux-x64'
+default['java']['install_from'] = 'amazon_source'
+default['java']['install_version'] = 'jdk-8u212-linux-x64'
 
 # -- AMBARI CLUSTER --
 default['hw']['cluster']['name'] = 'hdf_demo'
-default['hw']['cluster']['blueprint_name'] = 'hdf_demo_3.2.0_blueprint'
-default['hw']['cluster']['blueprint_file'] = 'hdf_demo_3.2.0_blueprint.json'
-default['hw']['cluster']['hostmapping_file'] = 'hdf_demo_3.2.0_hostmapping.json'
+default['hw']['cluster']['blueprint_name'] = 'hdf_demo_3.4.1.1_blueprint'
+default['hw']['cluster']['blueprint_file'] = 'hdf_demo_3.4.1.1_blueprint.json'
+default['hw']['cluster']['hostmapping_file'] = 'hdf_demo_3.4.1.1_hostmapping.json'
 
 # -- AMBARI --
-override['hw']['ambari']['version'] = '2.7.0'
+override['hw']['ambari']['version'] = '2.7.3'
 default['hw']['ambari']['server']['setup']['db']['databasehost'] = 'localhost'
 default['hw']['ambari']['server']['setup']['db']['databaseport'] = '5432'
 default['hw']['ambari']['server']['setup']['db']['databasepassword'] = 'bigdata'
@@ -100,37 +100,43 @@ else
 end
 
 # -- HORTONWORKS HDF --
-default['hw']['hdf']['version'] = '3.2.0'
+default['hw']['hdf']['version'] = '3.4.1.1'
 # 2.1.1
 default['hw']['hdf']['2.1.1']['version_full'] = '2.1.1.0-2'
-default['hw']['hdf']['2.1.1']['vdf'] = 'http://public-repo-1.hortonworks.com/HDF/centos7/2.x/updates/2.1.1.0/HDF-2.1.1.0-2.xml'
+default['hw']['hdf']['2.1.1']['vdf'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/2.x/updates/2.1.1.0/HDF-2.1.1.0-2.xml"
 default['hw']['hdf']['2.1.1']['repo'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/2.x/updates/2.1.1.0/hdf.repo"
 default['hw']['hdf']['2.1.1']['mgmt_pack']['url'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/2.x/updates/2.1.1.0/tars/hdf_ambari_mp/hdf-ambari-mpack-2.1.1.0-2.tar.gz"
 default['hw']['hdf']['2.1.1']['mgmt_pack']['checksum'] = '1f85395a63573ef7b3ff8cbbb6822b1f46615383c0219ac0064e0739b8634591'
 # 2.1.2
 default['hw']['hdf']['2.1.2']['version_full'] = '2.1.2.0-10'
-default['hw']['hdf']['2.1.2']['vdf'] = 'http://public-repo-1.hortonworks.com/HDF/centos7/2.x/updates/2.1.2.0/HDF-2.1.2.0-10.xml'
+default['hw']['hdf']['2.1.2']['vdf'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/2.x/updates/2.1.2.0/HDF-2.1.2.0-10.xml"
 default['hw']['hdf']['2.1.2']['repo'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/2.x/updates/2.1.2.0/hdf.repo"
 default['hw']['hdf']['2.1.2']['mgmt_pack']['url'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/2.x/updates/2.1.2.0/tars/hdf_ambari_mp/hdf-ambari-mpack-2.1.2.0-10.tar.gz"
 default['hw']['hdf']['2.1.2']['mgmt_pack']['checksum'] = 'c3705419c0ca53935bb8edb13cb6de35214f18d37f8d7aa03890ea6574caf7e6'
 # 2.1.4
 default['hw']['hdf']['2.1.4']['version_full'] = '2.1.4.0-5'
-default['hw']['hdf']['2.1.4']['vdf'] = 'http://public-repo-1.hortonworks.com/HDF/centos7/2.x/updates/2.1.4.0/HDF-2.1.4.0-5.xml'
+default['hw']['hdf']['2.1.4']['vdf'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/2.x/updates/2.1.4.0/HDF-2.1.4.0-5.xml"
 default['hw']['hdf']['2.1.4']['repo'] =	"http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/2.x/updates/2.1.4.0/hdf.repo"
 default['hw']['hdf']['2.1.4']['mgmt_pack']['url'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/2.x/updates/2.1.4.0/tars/hdf_ambari_mp/hdf-ambari-mpack-2.1.4.0-5.tar.gz"
 default['hw']['hdf']['2.1.4']['mgmt_pack']['checksum'] = 'f44bccfe8fc9e0e6729e78520f312e41cf4a6121470076c22aa1d84295dbf6bb'
 # 3.1.2
 default['hw']['hdf']['3.1.2']['version_full'] = '3.1.2.0-7'
-default['hw']['hdf']['3.1.2']['vdf'] = 'http://public-repo-1.hortonworks.com/HDF/centos7/3.x/updates/3.1.2.0/HDF-3.1.2.0-7.xml'
+default['hw']['hdf']['3.1.2']['vdf'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/3.x/updates/3.1.2.0/HDF-3.1.2.0-7.xml"
 default['hw']['hdf']['3.1.2']['repo'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/3.x/updates/3.1.2.0/hdf.repo"
 default['hw']['hdf']['3.1.2']['mgmt_pack']['url'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/3.x/updates/3.1.2.0/tars/hdf_ambari_mp/hdf-ambari-mpack-3.1.2.0-7.tar.gz"
 default['hw']['hdf']['3.1.2']['mgmt_pack']['checksum'] = 'f7bf7469cf4152dacd517916a0a93936ed1baf3328efa232c6e8f0894af77fe0'
 # 3.2.0
 default['hw']['hdf']['3.2.0']['version_full'] = '3.2.0.0-520'
-default['hw']['hdf']['3.2.0']['vdf'] = 'http://public-repo-1.hortonworks.com/HDF/centos7/3.x/updates/3.2.0.0/HDF-3.2.0.0-520.xml'
+default['hw']['hdf']['3.2.0']['vdf'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/3.x/updates/3.2.0.0/HDF-3.2.0.0-520.xml"
 default['hw']['hdf']['3.2.0']['repo'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/3.x/updates/3.2.0.0/hdf.repo"
 default['hw']['hdf']['3.2.0']['mgmt_pack']['url'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/3.x/updates/3.2.0.0/tars/hdf_ambari_mp/hdf-ambari-mpack-3.2.0.0-520.tar.gz"
 default['hw']['hdf']['3.2.0']['mgmt_pack']['checksum'] = '89472d3e969a7a3117c120b15433f18fd1963c81aaa87bc5ccf88e7cf0d80b6e'
+# 3.4.1.1
+default['hw']['hdf']['3.4.1.1']['version_full'] = '3.4.1.1-4'
+default['hw']['hdf']['3.4.1.1']['vdf'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/3.x/updates/3.4.1.1/HDF-3.4.1.1-4.xml"
+default['hw']['hdf']['3.4.1.1']['repo'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/3.x/updates/3.4.1.1/hdf.repo"
+default['hw']['hdf']['3.4.1.1']['mgmt_pack']['url'] = "http://public-repo-1.hortonworks.com/HDF/centos#{node['platform_version'].to_i}/3.x/updates/3.4.1.1/tars/hdf_ambari_mp/hdf-ambari-mpack-3.4.1.1-4.tar.gz"
+default['hw']['hdf']['3.4.1.1']['mgmt_pack']['checksum'] = '733172fd9a08831719ca81102ad00e218468c1d5cb39f8c55802898cac7587af'
 
 # hdf
 default['hw']['hadoop']['common']['group']['name'] = 'hadoop'
