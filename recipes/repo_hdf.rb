@@ -24,18 +24,19 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+hdf_version = -> { node['hw']['hdf']['version'] }
+hdf_repo = -> { node['hw']['hdf'][hdf_version.call]['repo'] }
+
 # reload internal Chef yum cache
 ruby_block 'yum_cache_reload' do
   block { Chef::Provider::Package::Yum::YumCache.instance.reload }
   action :nothing
 end
 
-hdf_repo = -> { node['hw']['hdf'][node['hw']['hdf']['version']]['repo'] }
-
 # add hdf yum repo
 remote_file 'hdf_yum_repo' do
   source hdf_repo.call
-  path "/etc/yum.repos.d/hdf_#{node['hw']['hdf']['version']}.repo"
+  path "/etc/yum.repos.d/hdf_#{hdf_version.call}.repo"
   owner 'root'
   group 'root'
   mode '0644'

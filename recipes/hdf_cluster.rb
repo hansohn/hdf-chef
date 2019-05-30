@@ -24,6 +24,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+hdf_version = -> { node['hw']['hdf']['version'] }
+hdf_version_full = -> { node['hw']['hdf'][hdf_version.call]['version_full'] }
+hdf_vdf = -> { node['hw']['hdf'][hdf_version.call]['vdf'] }
+
 # hdf-cluster: create clusters directory
 directory 'make_/var/lib/ambari-clusters' do
   path '/var/lib/ambari-clusters'
@@ -31,9 +35,6 @@ directory 'make_/var/lib/ambari-clusters' do
   owner node['hw']['ambari']['server']['user']['name']
   group 'root'
 end
-
-hdf_version_full = -> { node['hw']['hdf'][node['hw']['hdf']['version']]['version_full'] }
-hdf_vdf = -> { node['hw']['hdf'][node['hw']['hdf']['version']]['vdf'] }
 
 # hdf-cluster: add version definition file to cluster dir
 remote_file "create_/var/lib/ambari-clusters/HDF-#{hdf_version_full.call}.xml" do

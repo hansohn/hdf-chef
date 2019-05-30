@@ -24,19 +24,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-hdf_mpack_source = -> { node['hw']['hdf'][node['hw']['hdf']['version']]['mgmt_pack']['url'] }
-hdf_mpack_checksum = -> { node['hw']['hdf'][node['hw']['hdf']['version']]['mgmt_pack']['checksum'] }
+hdf_version = -> { node['hw']['hdf']['version'] }
+hdf_mpack_source = -> { node['hw']['hdf'][hdf_version.call]['mgmt_pack']['url'] }
+hdf_mpack_checksum = -> { node['hw']['hdf'][hdf_version.call]['mgmt_pack']['checksum'] }
 
 # download hdf management pack
 remote_file 'download_hdf_mgmt_pack' do
-  path "/tmp/hdf-ambari-mpack-#{node['hw']['hdf']['version']}.tar.gz"
+  path "#{Chef::Config[:file_cache_path]}/hdf-ambari-mpack-#{hdf_version.call}.tar.gz"
   source hdf_mpack_source.call
   checksum hdf_mpack_checksum.call
 end
 
 # backup ambari resources
 bash 'backup_ambari_resources' do
-  code 'cp -r /var/lib/ambari-server/resources /var/lib/ambari-server/resources.backup'
+  code 'cp -r /var/lib/ambari-server/resources /var/lib/ambari-server/resources_$(date +%s)'
   action :nothing
   only_if { File.exist?('/var/lib/ambari-server/resources') }
 end
@@ -70,12 +71,12 @@ end
 bash 'install_hdf_mgmt_pack' do
   code <<-EOF
     yes | ambari-server install-mpack \
-      --mpack=/tmp/hdf-ambari-mpack-#{node['hw']['hdf']['version']}.tar.gz \
+      --mpack=#{Chef::Config[:file_cache_path]}/hdf-ambari-mpack-#{hdf_version.call}.tar.gz \
       --purge \
       --verbose
   EOF
-  only_if { File.exist?("/tmp/hdf-ambari-mpack-#{node['hw']['hdf']['version']}.tar.gz") }
-  not_if  { Dir["/var/lib/ambari-server/resources/mpacks/hdf-ambari-mpack-#{node['hw']['hdf']['version']}.*"].any? }
+  only_if { File.exist?("#{Chef::Config[:file_cache_path]}/hdf-ambari-mpack-#{hdf_version.call}.tar.gz") }
+  not_if  { Dir["/var/lib/ambari-server/resources/mpacks/hdf-ambari-mpack-#{hdf_version.call}.*"].any? }
   notifies :run, 'bash[backup_ambari_resources]', :before
   notifies :run, 'bash[set_ambari-server_file_permissions]', :immediately
   notifies :restart, 'service[ambari-server_service]', :immediately
