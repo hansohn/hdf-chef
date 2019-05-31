@@ -22,11 +22,17 @@ include 'ambari-chef::ambari_agent'
 ```ruby
 # -- INCLUDE ATTRIBUTES --
 # python 2
-default['python']['python2']['packages'] = ['python']
+override['python'] = {
+  'python2' => { 
+    'packages' => ['python'],
+  },
+}
 
 # java 8
-default['java']['install_from'] = 'amazon_source'
-default['java']['install_version'] = 'jdk-8u212-linux-x64'
+override['java'] = {
+  'install_from' => 'amazon_source',
+  'install_version' => 'jdk-8u212-linux-x64',
+}
 ```
 
 ### Configuration
@@ -35,7 +41,9 @@ By default this cookbook installs HDF version ```3.4.1.1```. A different version
 
 ```ruby
 # hdf
-default['hw']['hdf']['version'] = '3.4.1.1'
+override['hw']['hdf'] = {
+  'version' => '3.4.1.1',
+}
 ```
 
 ### Blueprints
@@ -47,11 +55,15 @@ You can create your own blueprints and modify the following to push them out wit
 ```ruby
 # -- INCLUDE ATTRIBUTES --
 # hortonworks hdf cluster
-default['hw']['hdf']['version'] = '3.4.1.1'
-default['hw']['hdf']['cluster']['name'] = 'hdf_demo'
-default['hw']['hdf']['cluster']['blueprint_name'] = 'hdf_demo_3.4.1.1_blueprint'
-default['hw']['hdf']['cluster']['blueprint_file'] = 'hdf_demo_3.4.1.1_blueprint.json'
-default['hw']['hdf']['cluster']['hostmapping_file'] = 'hdf_demo_3.4.1.1_hostmapping.json'
+override['hw']['hdf'] = {
+  'version' => '3.4.1.1',
+  'cluster' => {
+    'name' => 'hdf_demo',
+    'blueprint_name' => 'hdf_demo_3.4.1.1_blueprint',
+    'blueprint_file' => 'hdf_demo_3.4.1.1_blueprint.json',
+    'hostmapping_file' => 'hdf_demo_3.4.1.1_hostmapping.json',
+  },
+}
 ```
 
 ### Usage

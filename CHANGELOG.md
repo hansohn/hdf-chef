@@ -6,13 +6,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - no new features in development at this time
 
-## [0.4.0](https://github.com/hansohn/hdf-chef/compare/0.3.0...0.4.0) (May 30, 2019)
+## [1.0.0](https://github.com/hansohn/hdf-chef/compare/0.3.0...1.0.0) (May 31, 2019)
 
 FEATURES:
 
 - bump hdf to 3.4.1.1
 - bump ambari to 2.7.0
 - bump java to 8u212
+- update attributes format
 
 ## [0.3.0](https://github.com/hansohn/hdf-chef/compare/0.2.0...0.3.0) (Aug 21, 2018)
 
